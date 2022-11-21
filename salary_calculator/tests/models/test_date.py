@@ -3,7 +3,7 @@ from marshmallow import ValidationError
 from salary_calculator.models.date import Date, DateSchema
 
 
-class DateTests(TestCase):
+class DateSchemaTests(TestCase):
 
     def test_roundtrip_conversion(self):
 
