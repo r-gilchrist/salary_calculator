@@ -27,11 +27,11 @@ jobs:
         run: "pip3 install -r requirements.txt"
 
       - name: run code quality checks
-        run: 'python3 -m flake8 com'
+        run: 'python3 -m flake8'
 
       - name: run tests and coverage
         run: |
-          python3 -m coverage run --source=com/optibrium/dms/common -m pytest
+          python3 -m coverage run -m pytest
           python3 -m coverage report -i --fail-under=0
 
       - name: build wheel
