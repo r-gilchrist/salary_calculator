@@ -1,0 +1,38 @@
+---
+
+name: All checks
+
+on: [push, create]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
+    steps:
+
+      - name: checkout
+        uses: "actions/checkout@v3"
+
+      - name: set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: install build dependencies
+        run: "pip3 install -r requirements.txt"
+
+      - name: run code quality checks
+        run: 'python3 -m flake8 com'
+
+      - name: run tests and coverage
+        run: |
+          python3 -m coverage run --source=com/optibrium/dms/common -m pytest
+          python3 -m coverage report -i --fail-under=0
+
+      - name: build wheel
+        run: 'python3 setup.py bdist_wheel'
