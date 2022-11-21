@@ -19,5 +19,5 @@ setup(
         "salary_calc.models",
         "salary_calc.helpers"
     ],
-    python_requires=">=3.11"
+    python_requires=">=3.9"
 )
