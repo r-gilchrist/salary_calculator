@@ -16,8 +16,10 @@ setup(
         "marshmallow_enum==1.5.1"
     ],
     packages=[
-        "salary_calc.models",
-        "salary_calc.helpers"
+        "salary_calculator.models",
+        "salary_calculator.helpers",
+        "salary_calculator.endpoints",
+        "salary_calculator.data"
     ],
     python_requires=">=3.9"
 )
